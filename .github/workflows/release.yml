@@ -38,7 +38,29 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./aws-token-generator
+          asset_name: aws-token-generator
+          asset_content_type: application/binary
+
+      - name: Create Latest Release
+        id: create_latest_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release latest
+          draft: false
+          prerelease: false
+
+      - name: Upload Latest Release Asset
+        id: upload-release-latest-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.upload-release-latest-asset.outputs.upload_url }}
           asset_path: ./aws-token-generator
           asset_name: aws-token-generator
           asset_content_type: application/binary
