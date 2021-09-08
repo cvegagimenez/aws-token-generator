@@ -9,12 +9,6 @@ Download the binary file from _Github_ and move it to a directory added to your 
 
 ```
 $ cd /tmp
-$ wget https://github.com/Gigigotrek/aws-token-generator/releases/download/latest/aws-token-generator
-```
-Or if you want to download an old version, 
-
-```
-$ cd /tmp
 $ wget https://github.com/Gigigotrek/aws-token-generator/releases/download/{VERSION_TO_INSTALL}/aws-token-generator
 ```
 
@@ -30,14 +24,14 @@ $ sudo mv /tmp/aws-token-generator /usr/local/bin/
 ## Parameters
 
 ```
-+-----------------------+--------+----------+--------------------------------------------+-----------------------------------------------------+
-|   Input Variable      |  type  | Required |                  default                   |                     Description                     |
-+-----------------------+--------+----------+--------------------------------------------+-----------------------------------------------------+
-| token                 | string | yes      |                                            | Token provided by the MFA device.                   |
-| profile               | string | yes      |                                            | Local profile to use to connect to AWS.             |
-| expiration            | int64  | no       | 3600                                       | Expiration time for the token.                      |
-| region                | string | no       | eu-west-1                                  | Region to set the environment profile.              |
-+-----------------------+--------+----------+--------------------------------------------+-----------------------------------------------------+
++-------------------+------------------+--------+----------+--------------------------------------------+-----------------------------------------------------+
+|   Input Variable  |  Short Variable  |  type  | Required |                  default                   |                     Description                     |
++-------------------+------------------+--------+----------+--------------------------------------------+-----------------------------------------------------+
+| token             | -t               | string | yes      |                                            | Token provided by the MFA device.                   |
+| profile           | -p               | string | yes      |                                            | Local profile to use to connect to AWS.             |
+| expiration        | -e               | int64  | no       | 3600                                       | Expiration time for the token.                      |
+| region            | -r               | string | no       | eu-west-1                                  | Region to set the environment profile.              |
++--------------------------------------+--------+----------+--------------------------------------------+-----------------------------------------------------+
 ```
 
 ## Example

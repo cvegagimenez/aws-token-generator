@@ -42,25 +42,3 @@ jobs:
           asset_path: ./aws-token-generator
           asset_name: aws-token-generator
           asset_content_type: application/binary
-
-      - name: Create Latest Release
-        id: create_latest_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: latest
-          release_name: Release latest
-          draft: false
-          prerelease: false
-
-      - name: Upload Latest Release Asset
-        id: upload-release-latest-asset 
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_latest_release.outputs.upload_url }}
-          asset_path: ./aws-token-generator
-          asset_name: aws-token-generator
-          asset_content_type: application/binary
